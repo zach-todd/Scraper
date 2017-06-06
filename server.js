@@ -85,7 +85,8 @@ app.get("/scrape", function(req, res) {
     });
   });
   // Tell the browser that we finished scraping the text
-  res.send("Scrape Complete");
+  res.send("Scrape Complete" + "<a href = '/'> <button class = 'btn btn-lg btn-block btn-primary'>return</button> </a>");
+  
 });
 
 // This will get the articles we scraped from the mongoDB

@@ -36,7 +36,6 @@ $(document).on("click", "p", function() {
       }
     });
 });
-
 // When you click the saveComment button
 $(document).on("click", "#saveComment", function() {
   // Grab the id associated with the article from the submit button
@@ -63,3 +62,4 @@ $(document).on("click", "#saveComment", function() {
   // Also, remove the values entered in the input and textarea for Comment entry
   $("#bodyinput").val("");
 });
+
