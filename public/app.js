@@ -24,14 +24,15 @@ $(document).on("click", "p", function() {
     .done(function(data) {
       console.log(data);
       // A textarea to add a new Comment body
-      $("#Comments").append("<div class = 'panel panel-info'><div class = 'panel-heading'>"+ "Comments" + "</div> <textarea id='bodyinput' name='body'></textarea></div>");
+      $("#Comments").append("<div class = 'panel panel-info'><div class = 'panel-heading'>Comments</div><div id ='preComments' class = 'panel-body'> No comments yet </div></div> <textarea id='bodyinput' name='body'></textarea>");
       // A button to submit a new Comment, with the id of the article saved to it
-      $("#Comments").append("<button data-id='" + data._id + "' id='saveComment'>Save Comment</button>");
+      $("#Comments").append("<button data-id='" + data._id + "' id='saveComment'>Submit Comment</button>");
 
       // If there's a Comment in the article
       if (data.comment) {
         // Place the body of the Comment in the body textarea
-        $("#bodyinput").val(data.comment.body);
+        $("#preComments").html("");
+        $("#preComments").append(data.comment.body + "</br>");
 
       }
     });
