@@ -8,7 +8,7 @@ var CommentSchema = new Schema({
   // Just a string
   // Just a string
   body: {
-    type: String
+   ofString : [String]
   }
 });
 

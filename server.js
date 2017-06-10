@@ -85,7 +85,7 @@ app.get("/scrape", function(req, res) {
     });
   });
   // Tell the browser that we finished scraping the text
-  res.send("Scrape Complete" + "<a href = '/'> <button class = 'btn btn-lg btn-block btn-primary'>return</button> </a>");
+  res.send("Scrape Complete" + "<br/> <a href = '/'> <button class = 'btn btn-lg btn-block btn-primary'>return</button> </a>");
   
 });
 
@@ -138,8 +138,8 @@ app.post("/articles/:id", function(req, res) {
     // Otherwise
     else {
       // Use the article id to find and update it's Comment
-      Article.findOneAndUpdate({ "_id": req.params.id }, { "comment": doc._id })
-      // Execute the above query
+      Article.findOneAndUpdate({ "_id": req.params.id }, {$push: {"comment": doc._id }} , {new:true})
+      // Execute cthe above query
       .exec(function(err, doc) {
         // Log any errors
         if (err) {

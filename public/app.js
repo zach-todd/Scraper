@@ -11,6 +11,7 @@ $.getJSON("/articles", function(data) {
 // Whenever someone clicks a p tag
 $(document).on("click", "p", function() {
   // Empty the Comments from the Comment section
+  console.log("click");
   $("#Comments").empty();
   // Save the id from the p tag
   var thisId = $(this).attr("data-id");
@@ -20,7 +21,7 @@ $(document).on("click", "p", function() {
     method: "GET",
     url: "/articles/" + thisId
   })
-    // With that done, add the Comment information to the page
+      // With that done, add the Comment information to the page
     .done(function(data) {
       console.log(data);
       // A textarea to add a new Comment body
@@ -28,14 +29,17 @@ $(document).on("click", "p", function() {
       // A button to submit a new Comment, with the id of the article saved to it
       $("#Comments").append("<button data-id='" + data._id + "' id='saveComment'>Submit Comment</button>");
 
+      console.log(data.comment);
       // If there's a Comment in the article
       if (data.comment) {
         // Place the body of the Comment in the body textarea
         $("#preComments").html("");
         $("#preComments").append(data.comment.body + "</br>");
+        console.log("werreee  " + data.comment.body);
+
 
       }
-    });
+    });  
 });
 // When you click the saveComment button
 $(document).on("click", "#saveComment", function() {
@@ -57,7 +61,7 @@ $(document).on("click", "#saveComment", function() {
       // Log the response
       console.log(data);
       // Empty the Comments section
-      $("#Comments").empty();
+      $("#bodyinput").empty();
     });
 
   // Also, remove the values entered in the input and textarea for Comment entry
